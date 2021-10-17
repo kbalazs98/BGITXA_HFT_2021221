@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Data
 {
-    public class TelevisionShopContext : DbContext
+    public class TelevisionShopDbContext : DbContext
     {
         public virtual DbSet<Television> Televisions { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public TelevisionShopContext()
+        public TelevisionShopDbContext()
         {
             Database.EnsureCreated();
         }
-        public TelevisionShopContext(DbContextOptions<TelevisionShopContext> options) : base(options)
+        public TelevisionShopDbContext(DbContextOptions<TelevisionShopDbContext> options) : base(options)
         {
 
         }

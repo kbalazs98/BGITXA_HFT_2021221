@@ -9,7 +9,7 @@ namespace BGITXA_HFT_2021221.Client
     {
         static void Main(string[] args)
         {
-            TelevisionShopContext tsc = new TelevisionShopContext();
+            TelevisionShopDbContext tsc = new TelevisionShopDbContext();
             var res1 = tsc.Televisions.ToList();
 
             var res2 = tsc.Televisions
