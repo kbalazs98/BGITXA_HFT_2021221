@@ -17,27 +17,33 @@ namespace BGITXA_HFT_2021221.Repository
         }
         public void Create(Television television)
         {
-            throw new NotImplementedException();
+            context.Televisions.Add(television);
+            context.SaveChanges();
         }
 
         public void Delete(int televisionId)
         {
-            throw new NotImplementedException();
+            context.Televisions.Remove(ReadOne(televisionId));
+            context.SaveChanges();
         }
 
         public IQueryable<Television> ReadAll()
         {
-            throw new NotImplementedException();
+            return context.Televisions;
         }
 
         public Television ReadOne(int id)
         {
-            throw new NotImplementedException();
+            return context.Televisions.FirstOrDefault(t => t.Id == id);
         }
 
         public void Update(Television television)
         {
-            throw new NotImplementedException();
+            Television old = ReadOne(television.Id);
+            old.Model = television.Model;
+            old.Order = television.Order;
+            old.OrderId = television.OrderId;
+            old.Price = television.Price;
         }
     }
 }
