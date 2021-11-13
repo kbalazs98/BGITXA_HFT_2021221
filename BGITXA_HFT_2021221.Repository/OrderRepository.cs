@@ -29,17 +29,20 @@ namespace BGITXA_HFT_2021221.Repository
 
         public IQueryable<Order> ReadAll()
         {
-            throw new NotImplementedException();
+            return context.Orders;
         }
 
         public Order ReadOne(int id)
         {
-            throw new NotImplementedException();
+            return context.Orders.FirstOrDefault(o => o.Id == id);
         }
 
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            Order old = ReadOne(order.Id);
+
+            old.CustomerName = order.CustomerName;
+            old.Televisions = order.Televisions;
         }
     }
 }
