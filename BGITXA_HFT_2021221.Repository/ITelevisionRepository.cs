@@ -11,7 +11,7 @@ namespace BGITXA_HFT_2021221.Repository
     {
         //CRUD
         void Create(Television television);
-        void ReadOne(int id);
+        Television ReadOne(int id);
         IQueryable<Television> ReadAll();
         void Update(Television television);
         void Delete(int televisionId);

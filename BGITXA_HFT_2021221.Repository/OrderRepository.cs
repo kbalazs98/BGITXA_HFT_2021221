@@ -1,4 +1,5 @@
-﻿using BGITXA_HFT_2021221.Models;
+﻿using BGITXA_HFT_2021221.Data;
+using BGITXA_HFT_2021221.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,21 @@ namespace BGITXA_HFT_2021221.Repository
 {
     class OrderRepository : IOrderRepository
     {
+        TelevisionShopDbContext context;
+        public OrderRepository(TelevisionShopDbContext context)
+        {
+            this.context = context;
+        }
         public void Create(Order order)
         {
-            throw new NotImplementedException();
+            context.Orders.Add(order);
+            context.SaveChanges();
         }
 
         public void Delete(int orderId)
         {
-            throw new NotImplementedException();
+            context.Orders.Remove(ReadOne(orderId));
+            context.SaveChanges();
         }
 
         public IQueryable<Order> ReadAll()
@@ -24,7 +32,7 @@ namespace BGITXA_HFT_2021221.Repository
             throw new NotImplementedException();
         }
 
-        public void ReadOne(int id)
+        public Order ReadOne(int id)
         {
             throw new NotImplementedException();
         }

@@ -11,7 +11,7 @@ namespace BGITXA_HFT_2021221.Repository
     {
         //CRUD
         void Create(Order order);
-        void ReadOne(int id);
+        Order ReadOne(int id);
         IQueryable<Order> ReadAll();
         void Update(Order order);
         void Delete(int orderId);
