@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Repository
 {
-    public interface IOrderLogic
+    public interface IOrderRepository
     {
         //CRUD
         void Create(Order order);
