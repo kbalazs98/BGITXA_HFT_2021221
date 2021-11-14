@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Repository
 {
-    class TelevisionRepository : ITelevisionRepository
+    public class TelevisionRepository : ITelevisionRepository
     {
         TelevisionShopDbContext context;
         public TelevisionRepository(TelevisionShopDbContext context)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Repository
 {
-    class OrderRepository : IOrderRepository
+    public class OrderRepository : IOrderRepository
     {
         TelevisionShopDbContext context;
         public OrderRepository(TelevisionShopDbContext context)
