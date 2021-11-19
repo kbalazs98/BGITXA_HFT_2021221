@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Logic
 {
-    class OrderLogic
+    public class OrderLogic
     {
     }
 }
