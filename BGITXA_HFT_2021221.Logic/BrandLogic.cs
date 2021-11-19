@@ -19,27 +19,22 @@ namespace BGITXA_HFT_2021221.Logic
 
         public void Create(Brand brand)
         {
-            throw new NotImplementedException();
+            repo.Create(brand);
         }
 
         public void Delete(int brandId)
         {
-            throw new NotImplementedException();
+            repo.Delete(brandId);
         }
 
         public IQueryable<Brand> ReadAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public Brand ReadOne(int id)
-        {
-            throw new NotImplementedException();
+            return repo.ReadAll();
         }
 
         public void Update(Brand brand)
         {
-            throw new NotImplementedException();
+            repo.Update(brand);
         }
     }
 }

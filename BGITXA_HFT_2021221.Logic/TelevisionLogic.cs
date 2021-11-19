@@ -16,30 +16,21 @@ namespace BGITXA_HFT_2021221.Logic
         {
             this.repo = repo;
         }
-
         public void Create(Television television)
         {
-            throw new NotImplementedException();
+            repo.Create(television);
         }
-
         public void Delete(int televisionId)
         {
-            throw new NotImplementedException();
+            repo.Delete(televisionId);
         }
-
         public IQueryable<Television> ReadAll()
         {
-            throw new NotImplementedException();
+            return repo.ReadAll();
         }
-
-        public Television ReadOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update(Television television)
         {
-            throw new NotImplementedException();
+            repo.Update(television);
         }
     }
 }

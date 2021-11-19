@@ -19,27 +19,22 @@ namespace BGITXA_HFT_2021221.Logic
 
         public void Create(Order order)
         {
-            throw new NotImplementedException();
+            repo.Create(order);
         }
 
         public void Delete(int orderId)
         {
-            throw new NotImplementedException();
+            repo.Delete(orderId);
         }
 
         public IQueryable<Order> ReadAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public Order ReadOne(int id)
-        {
-            throw new NotImplementedException();
+            return repo.ReadAll();
         }
 
         public void Update(Order order)
         {
-            throw new NotImplementedException();
+            repo.Update(order);
         }
     }
 }

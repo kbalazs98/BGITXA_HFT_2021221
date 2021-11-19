@@ -10,7 +10,6 @@ namespace BGITXA_HFT_2021221.Logic
     public interface IBrandLogic
     {
         void Create(Brand brand);
-        Brand ReadOne(int id);
         IQueryable<Brand> ReadAll();
         void Update(Brand brand);
         void Delete(int brandId);
