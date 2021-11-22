@@ -32,5 +32,19 @@ namespace BGITXA_HFT_2021221.Logic
         {
             repo.Update(television);
         }
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceOfOrder()
+        {
+            return repo.ReadAll()
+               .GroupBy(x => x.Order)
+               .Select(x => new KeyValuePair<string, double>
+               (x.Key.CustomerName, x.Average(x => x.Price) ?? 0));
+        }
+        public IEnumerable<Order> OrderPrice()
+        {
+            return repo.ReadAll()
+                   .GroupBy(x => x.Order)
+                   .OrderBy(x => x.Average(x => x.Price))
+                   .Select(x => x.Key);
+        }
     }
 }

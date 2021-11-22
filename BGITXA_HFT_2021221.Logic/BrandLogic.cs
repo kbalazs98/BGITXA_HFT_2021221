@@ -10,11 +10,23 @@ namespace BGITXA_HFT_2021221.Logic
 {
     public class BrandLogic : IBrandLogic
     {
+        
+
         IBrandRepository repo;
 
         public BrandLogic(IBrandRepository repo)
         {
             this.repo = repo;
+        }
+
+        public IEnumerable<Brand> AveragePriceByBrand()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Brand> CountTv()
+        {
+            throw new NotImplementedException();
         }
 
         public void Create(Brand brand)

@@ -9,6 +9,11 @@ namespace BGITXA_HFT_2021221.Logic
 {
     public interface IBrandLogic
     {
+        //markaknak hany tv-je van
+        IEnumerable<Brand> CountTv();
+        //markak atlagara alapjan rangsor
+        IEnumerable<Brand> AveragePriceByBrand();
+
         void Create(Brand brand);
         IQueryable<Brand> ReadAll();
         void Update(Brand brand);

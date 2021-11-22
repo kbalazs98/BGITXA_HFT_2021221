@@ -11,7 +11,7 @@ namespace BGITXA_HFT_2021221.Logic
     public class OrderLogic : IOrderLogic
     {
         IOrderRepository repo;
-
+        
         public OrderLogic(IOrderRepository repo)
         {
             this.repo = repo;
@@ -36,5 +36,6 @@ namespace BGITXA_HFT_2021221.Logic
         {
             repo.Update(order);
         }
+       
     }
 }

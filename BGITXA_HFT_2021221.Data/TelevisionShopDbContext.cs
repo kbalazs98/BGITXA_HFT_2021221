@@ -32,6 +32,11 @@ namespace BGITXA_HFT_2021221.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+           
+            //brandek atlagara alapjan rangsor
+            //orderek ara/erteke
+            //orderek vegosszeg szerint rangsor 
+
             Brand samsung = new Brand() { Id = 1, Name = "Samsung" };
             Brand lg = new Brand() { Id = 2, Name = "LG" };
             Brand sony = new Brand() { Id = 3, Name = "Sony" };
