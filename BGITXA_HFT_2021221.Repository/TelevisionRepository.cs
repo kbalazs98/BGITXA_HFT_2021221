@@ -34,6 +34,7 @@ namespace BGITXA_HFT_2021221.Repository
 
         public Television ReadOne(int id)
         {
+            ;
             return context.Televisions.FirstOrDefault(t => t.Id == id);
         }
 
@@ -44,6 +45,7 @@ namespace BGITXA_HFT_2021221.Repository
             old.Order = television.Order;
             old.OrderId = television.OrderId;
             old.Price = television.Price;
+            context.SaveChanges();
         }
     }
 }

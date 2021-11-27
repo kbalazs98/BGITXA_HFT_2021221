@@ -9,7 +9,6 @@ namespace BGITXA_HFT_2021221.Repository
 {
     public interface ITelevisionRepository
     {
-        //CRUD
         void Create(Television television);
         Television ReadOne(int id);
         IQueryable<Television> ReadAll();

@@ -43,6 +43,7 @@ namespace BGITXA_HFT_2021221.Repository
 
             old.Name = brand.Name;
             old.Televisions = brand.Televisions;
+            context.SaveChanges();
         }
     }
 }

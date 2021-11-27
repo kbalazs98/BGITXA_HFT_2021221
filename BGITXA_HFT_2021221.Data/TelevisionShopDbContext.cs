@@ -33,9 +33,7 @@ namespace BGITXA_HFT_2021221.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            
-            //brandek atlagara alapjan rangsor
-            //orderek ara/erteke
-            //orderek vegosszeg szerint rangsor 
+            
 
             Brand samsung = new Brand() { Id = 1, Name = "Samsung" };
             Brand lg = new Brand() { Id = 2, Name = "LG" };
@@ -44,15 +42,15 @@ namespace BGITXA_HFT_2021221.Data
             Order order = new Order() { Id = 1, CustomerName = "Vásárló Vilmos" };
             Order order2 = new Order() { Id = 2, CustomerName = "Vásárló Veronika" };
 
-            Television samsung1 = new Television() { Id = 10, BrandId = samsung.Id, Price = 1000, Model = "UE32",OrderId = 1 };
-            Television samsung2 = new Television() { Id = 11, BrandId = samsung.Id, Price = 1500, Model = "UE40",OrderId = 1 };
-            Television lg1 = new Television() { Id = 20, BrandId = lg.Id, Price = 2000, Model = "OLED40", OrderId = 2 };
+            Television samsung1 = new Television() { Id = 10, BrandId = samsung.Id, Price = 1000, Model = "UE32",OrderId = order.Id };
+            Television samsung2 = new Television() { Id = 11, BrandId = samsung.Id, Price = 1500, Model = "UE40",OrderId = order.Id };
+            Television lg1 = new Television() { Id = 20, BrandId = lg.Id, Price = 2000, Model = "OLED40", OrderId = order2.Id };
 
-            Television lg2 = new Television() { Id = 21, BrandId = lg.Id, Price = 2500, Model = "OLED55", OrderId = 1 };
+            Television lg2 = new Television() { Id = 21, BrandId = lg.Id, Price = 2500, Model = "OLED55", OrderId = order.Id };
 
-            Television sony1 = new Television() { Id = 30, BrandId = sony.Id, Price = 1000, Model = "BRAVIA40",OrderId = 1 };
-            Television sony2 = new Television() { Id = 31, BrandId = sony.Id, Price = 1700, Model = "BRAVIA50",OrderId = 2 };
-            Television sony3 = new Television() { Id = 32, BrandId = sony.Id, Price = 3000, Model = "BRAVIA65",OrderId = 2 };
+            Television sony1 = new Television() { Id = 30, BrandId = sony.Id, Price = 1000, Model = "BRAVIA40",OrderId = order.Id };
+            Television sony2 = new Television() { Id = 31, BrandId = sony.Id, Price = 1700, Model = "BRAVIA50",OrderId = order2.Id };
+            Television sony3 = new Television() { Id = 32, BrandId = sony.Id, Price = 3000, Model = "BRAVIA65",OrderId = order2.Id };
 
 
 

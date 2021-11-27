@@ -19,11 +19,19 @@ namespace BGITXA_HFT_2021221.Logic
 
         public void Create(Order order)
         {
+            if(order.Id == 0)
+            {
+                throw new ArgumentNullException();
+            }
             repo.Create(order);
         }
 
         public void Delete(int orderId)
         {
+            if (orderId < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             repo.Delete(orderId);
         }
 
@@ -34,8 +42,11 @@ namespace BGITXA_HFT_2021221.Logic
 
         public void Update(Order order)
         {
+            if (order.Id == 0)
+            {
+                throw new ArgumentNullException();
+            }
             repo.Update(order);
         }
-       
     }
 }

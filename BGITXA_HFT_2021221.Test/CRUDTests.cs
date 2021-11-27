@@ -15,9 +15,6 @@ namespace BGITXA_HFT_2021221.Test
     class CRUDTests
     {
         ITelevisionLogic tvlogic;
-        ITelevisionRepository tvrepo;
-        //IOrderLogic orderlogic;
-        //IBrandLogic brandlogic;
 
         [SetUp]
         public void Setup()
@@ -25,65 +22,53 @@ namespace BGITXA_HFT_2021221.Test
             Mock<ITelevisionRepository> tvmock =
               new Mock<ITelevisionRepository>();
 
-            Brand b1 = new Brand() { Id = 1, Name = "elso" };
-            Brand b2 = new Brand() { Id = 2, Name = "masodik" };
+            Brand brand1 = new Brand() { Id = 1, Name = "brand1" };
+            Brand brand2 = new Brand() { Id = 2, Name = "brand2" };
 
-            Order o1 = new Order() { Id = 1, CustomerName = " AA" };
-            Order o2 = new Order() { Id = 2, CustomerName = " BB" };
+            Order order1 = new Order() { Id = 1, CustomerName = " order1" };
+            Order order2 = new Order() { Id = 2, CustomerName = " order2" };
+
+            Television tv1 = new Television() { Id = 1, Price = 10, Model = "b1o1", Brand = brand1, Order = order1 };
+            Television tv2 = new Television() { Id = 2, Price = 20, Model = "b1o2", Brand = brand1, Order = order2 };
+            Television tv3 = new Television() { Id = 3, Price = 30, Model = "b2o1", Brand = brand2, Order = order1 };
+            Television tv4 = new Television() { Id = 4, Price = 40, Model = "b2o2", Brand = brand2, Order = order2 };
+
 
             tvmock.Setup(x => x.ReadAll())
-                .Returns(new List<Television>
-                {   new Television(){Id = 1,Price = 10,OrderId = 1},
-                    new Television(){Id = 2,Price = 20,OrderId = 1},
-                    new Television(){Id = 3,Price = 30,OrderId = 2},
-                    new Television(){Id = 4,Price = 40,OrderId = 2},
-                }.AsQueryable());
+                .Returns(new List<Television> { tv1, tv2, tv3, tv4 }.AsQueryable());
 
             tvlogic = new TelevisionLogic(tvmock.Object);
-            tvrepo = tvmock.Object;
         }
         [Test]
-        public void TVLogicCreate()
+        public void SanityTest()
         {
-            int numberoftvsbeforecreate = tvlogic.ReadAll().Count();
-            Television newtw = new Television() { Id = 5, Price = 50, OrderId = 2 };
-            tvlogic.Create(newtw);
-            int numberoftvsaftercreate = tvlogic.ReadAll().Count();
-            Assert.That(numberoftvsbeforecreate == numberoftvsaftercreate);
+            var moqlogic = tvlogic.ReadAll();
+            Assert.NotNull(moqlogic);
         }
         [Test]
-        public void TVRepoCreate()
+        public void TvCreateWithoutModel()
         {
-            //it can create any type of tv
-
-            int numberoftvsbeforecreate = tvrepo.ReadAll().Count();
-            Television newtw = new Television() { Id = 5, Price = 50, OrderId = 2 };
-            tvrepo.Create(newtw);
-            int numberoftvsaftercreate = tvrepo.ReadAll().Count();
-            Assert.That(numberoftvsbeforecreate == numberoftvsaftercreate);
+            Assert.Throws<ArgumentNullException>(() => tvlogic.Create(new Television() { Id = 1, Price = 10, }));
         }
         [Test]
-        public void TVLogicCreateWithException()
+        public void TvCreateWithoutID()
         {
-            //throws exception 
-            Television newtw = new Television() { Id = 5, Price = 50, OrderId = 2 };
-            Assert.Throws<Exception>(() => tvlogic.Create(newtw));
+            Assert.Throws<ArgumentNullException>(() => tvlogic.Create(new Television() { Model = "model", Price = 10, }));
         }
         [Test]
-        public void TvLogicDelete()
+        public void TvDeleteWithNegativeId()
         {
-            int numberoftvsbeforedelete = tvlogic.ReadAll().Count();
-            tvlogic.Delete(2);
-            int numberoftvsafterdelete = tvlogic.ReadAll().Count();
-            Assert.AreEqual(numberoftvsafterdelete, numberoftvsbeforedelete);
+            Assert.Throws<ArgumentOutOfRangeException>(() => tvlogic.Delete(-1));
         }
         [Test]
-        public void TvLogicUpdate()
+        public void TvCreateWithId()
         {
-            Television newtv = new Television() { Id = 4, Price = 100, OrderId = 2 };
-            tvlogic.Update(newtv);
-            Television tvinrepo = tvlogic.ReadAll().Where(x=> x.Id == 3).FirstOrDefault();
-            Assert.That(tvinrepo.Price == newtv.Price);
+            Assert.DoesNotThrow( () => tvlogic.Create(new Television() { Id = 10, Model = "model", Price = 10 }) );
+        }
+        [Test]
+        public void TvDeleteWihtPozitiveId()
+        {
+            Assert.DoesNotThrow(() => tvlogic.Delete(1));
         }
     }
 }

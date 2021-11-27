@@ -10,32 +10,28 @@ namespace BGITXA_HFT_2021221.Logic
 {
     public class BrandLogic : IBrandLogic
     {
-        
-
         IBrandRepository repo;
 
         public BrandLogic(IBrandRepository repo)
         {
             this.repo = repo;
         }
-
-        public IEnumerable<Brand> AveragePriceByBrand()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Brand> CountTv()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public void Create(Brand brand)
         {
+            if(brand.Id == 0)
+            {
+                throw new ArgumentNullException();
+            }
             repo.Create(brand);
         }
 
         public void Delete(int brandId)
         {
+            if (brandId < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
             repo.Delete(brandId);
         }
 
@@ -46,6 +42,10 @@ namespace BGITXA_HFT_2021221.Logic
 
         public void Update(Brand brand)
         {
+            if (brand.Id == 0)
+            {
+                throw new ArgumentNullException();
+            }
             repo.Update(brand);
         }
     }
