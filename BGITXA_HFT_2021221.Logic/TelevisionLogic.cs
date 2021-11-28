@@ -22,10 +22,6 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 throw new ArgumentNullException();
             }
-            if (television.Id == 0)
-            {
-                throw new ArgumentNullException();
-            }
             repo.Create(television);
         }
         public void Delete(int televisionId)
@@ -46,10 +42,7 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 throw new ArgumentNullException();
             }
-            if (television.Id == 0)
-            {
-                throw new ArgumentNullException();
-            }
+            
             repo.Update(television);
         }
 

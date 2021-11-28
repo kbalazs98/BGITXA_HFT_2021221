@@ -19,10 +19,6 @@ namespace BGITXA_HFT_2021221.Logic
         
         public void Create(Brand brand)
         {
-            if(brand.Id == 0)
-            {
-                throw new ArgumentNullException();
-            }
             repo.Create(brand);
         }
 

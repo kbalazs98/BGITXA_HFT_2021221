@@ -51,9 +51,9 @@ namespace BGITXA_HFT_2021221.Test
             Assert.Throws<ArgumentNullException>(() => tvlogic.Create(new Television() { Id = 1, Price = 10, }));
         }
         [Test]
-        public void TvCreateWithoutID()
+        public void TvUpdateWithoutModel()
         {
-            Assert.Throws<ArgumentNullException>(() => tvlogic.Create(new Television() { Model = "model", Price = 10, }));
+            Assert.Throws<ArgumentNullException>(() => tvlogic.Update(new Television() { Price = 10, }));
         }
         [Test]
         public void TvDeleteWithNegativeId()

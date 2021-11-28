@@ -34,7 +34,6 @@ namespace BGITXA_HFT_2021221.Repository
 
         public Television ReadOne(int id)
         {
-            ;
             return context.Televisions.FirstOrDefault(t => t.Id == id);
         }
 

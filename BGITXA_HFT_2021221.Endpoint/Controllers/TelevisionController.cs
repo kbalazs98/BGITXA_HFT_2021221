@@ -28,29 +28,25 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             return tvlogic.ReadAll();
         }
 
-        // GET api/<TelevisionController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<TelevisionController>
+        // POST /televisions
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Television value)
         {
+            tvlogic.Create(value);
         }
 
-        // PUT api/<TelevisionController>/5
+        // PUT /televisions
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put([FromBody] Television value)
         {
+            tvlogic.Update(value);
         }
 
-        // DELETE api/<TelevisionController>/5
+        // DELETE /televisions
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            tvlogic.Delete(id);
         }
     }
 }
