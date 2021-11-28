@@ -9,13 +9,13 @@ namespace BGITXA_HFT_2021221.Logic
 {
     public interface ITelevisionLogic
     {
-        IEnumerable<KeyValuePair<string, double>> AveragePriceOfOrder();
+        IQueryable<KeyValuePair<string, double>> AveragePriceOfOrder();
 
-        IEnumerable<Order> OrdersInOrderByPrice();
+        IQueryable<Order> OrdersInOrderByPrice();
 
-        IEnumerable<KeyValuePair<string, double>> AveragePriceOfBrand();
+        IQueryable<KeyValuePair<string, double>> AveragePriceOfBrand();
 
-        IEnumerable<KeyValuePair<string, int>> CountTvByOrder();
+        IQueryable<KeyValuePair<string, int>> CountTvByOrder();
 
         Television CheapestTvOfTheBrand(int brandId);
 

@@ -35,14 +35,14 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             tvlogic.Create(value);
         }
 
-        // PUT /televisions
+        // PUT /televisions/id
         [HttpPut("{id}")]
         public void Put([FromBody] Television value)
         {
             tvlogic.Update(value);
         }
 
-        // DELETE /televisions
+        // DELETE /televisions/id
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -50,26 +50,26 @@ namespace BGITXA_HFT_2021221.Logic
             repo.Update(television);
         }
 
-        public IEnumerable<KeyValuePair<string, double>> AveragePriceOfBrand()
+        public IQueryable<KeyValuePair<string, double>> AveragePriceOfBrand()
         {
             return repo.ReadAll()
                 .GroupBy(x => x.Brand)
                 .Select(x => new KeyValuePair<string, double>
                 (x.Key.Name, x.Average(x => x.Price) ?? 0));
         }
-        public IEnumerable<KeyValuePair<string, int>> CountTvByOrder()
+        public IQueryable<KeyValuePair<string, int>> CountTvByOrder()
         {
             return repo.ReadAll().GroupBy(x => x.Order)
                  .Select(x => new KeyValuePair<string, int>(x.Key.CustomerName, x.Key.Televisions.Count()));
         }
-        public IEnumerable<KeyValuePair<string, double>> AveragePriceOfOrder()
+        public IQueryable<KeyValuePair<string, double>> AveragePriceOfOrder()
         {
             return repo.ReadAll()
                .GroupBy(x => x.Order)
                .Select(x => new KeyValuePair<string, double>
                (x.Key.CustomerName, x.Average(x => x.Price) ?? 0));
         }
-        public IEnumerable<Order> OrdersInOrderByPrice()
+        public IQueryable<Order> OrdersInOrderByPrice()
         {
             return repo.ReadAll()
                    .GroupBy(x => x.Order)

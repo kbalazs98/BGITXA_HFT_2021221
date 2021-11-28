@@ -16,7 +16,6 @@ namespace BGITXA_HFT_2021221.Models
         public int Id { get; set; }
         public string Name { get; set; }
         [NotMapped]
-        [JsonIgnore]
         public virtual ICollection<Television> Televisions { get; set; }
 
         public Brand()
