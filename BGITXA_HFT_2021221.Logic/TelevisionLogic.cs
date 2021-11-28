@@ -38,6 +38,10 @@ namespace BGITXA_HFT_2021221.Logic
         }
         public void Update(Television television)
         {
+            if(television.Id == 0)
+            {
+                throw new ArgumentNullException();
+            }
             if (television.Model == null)
             {
                 throw new ArgumentNullException();

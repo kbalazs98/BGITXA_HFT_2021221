@@ -70,5 +70,10 @@ namespace BGITXA_HFT_2021221.Test
         {
             Assert.DoesNotThrow(() => tvlogic.Delete(1));
         }
+        [Test]
+        public void UpDateIdTest()
+        {
+            Assert.Throws<ArgumentNullException>(() => tvlogic.Update(new Television() {Model = "model", Price = 10 }));
+        }
     }
 }
