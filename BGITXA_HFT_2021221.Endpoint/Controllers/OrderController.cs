@@ -48,5 +48,10 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         {
             orderLogic.Delete(id);
         }
+        [HttpGet("{id}")]
+        public Order Read(int id)
+        {
+            return orderLogic.ReadOne(id);
+        }
     }
 }

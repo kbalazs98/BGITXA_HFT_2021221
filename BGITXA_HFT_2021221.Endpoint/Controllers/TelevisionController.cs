@@ -48,5 +48,10 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         {
             tvlogic.Delete(id);
         }
+        [HttpGet("{id}")]
+        public Television Read(int id)
+        {
+            return tvlogic.ReadOne(id);
+        }
     }
 }

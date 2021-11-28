@@ -11,6 +11,7 @@ namespace BGITXA_HFT_2021221.Logic
     {
         void Create(Brand brand);
         IQueryable<Brand> ReadAll();
+        Brand ReadOne(int id);
         void Update(Brand brand);
         void Delete(int brandId);
     }

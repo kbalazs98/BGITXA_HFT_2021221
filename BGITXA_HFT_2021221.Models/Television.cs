@@ -20,11 +20,12 @@ namespace BGITXA_HFT_2021221.Models
 
         public int? Price { get; set; }
 
-        [NotMapped]
         [JsonIgnore]
+        [NotMapped]
         public virtual Brand Brand { get; set; }
-        [NotMapped]
+
         [JsonIgnore]
+        [NotMapped]
         public virtual Order Order { get; set; }
 
         public int BrandId { get; set; }

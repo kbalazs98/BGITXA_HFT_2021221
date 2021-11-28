@@ -36,6 +36,15 @@ namespace BGITXA_HFT_2021221.Logic
             return repo.ReadAll();
         }
 
+        public Order ReadOne(int id)
+        {
+            if (id < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            return repo.ReadOne(id);
+        }
+
         public void Update(Order order)
         {
             if (order.Id == 0)

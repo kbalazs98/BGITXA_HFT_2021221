@@ -11,6 +11,7 @@ namespace BGITXA_HFT_2021221.Logic
     {
         void Create(Order order);
         IQueryable<Order> ReadAll();
+        Order ReadOne(int id);
         void Update(Order order);
         void Delete(int orderId);
     }

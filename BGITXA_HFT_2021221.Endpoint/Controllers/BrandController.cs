@@ -48,5 +48,10 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         {
             brandLogic.Delete(id);
         }
+        [HttpGet("{id}")]
+        public Brand Read(int id)
+        {
+            return brandLogic.ReadOne(id);
+        }
     }
 }

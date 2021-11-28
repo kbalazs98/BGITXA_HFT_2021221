@@ -50,35 +50,43 @@ namespace BGITXA_HFT_2021221.Logic
             repo.Update(television);
         }
 
-        public IQueryable<KeyValuePair<string, double>> AveragePriceOfBrand()
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceOfBrand()
         {
             return repo.ReadAll()
-                .GroupBy(x => x.Brand)
+                .GroupBy(x => x.Brand.Name)
                 .Select(x => new KeyValuePair<string, double>
-                (x.Key.Name, x.Average(x => x.Price) ?? 0));
+                (x.Key, x.Average(x => x.Price) ?? 0)); ;
+               
         }
-        public IQueryable<KeyValuePair<string, int>> CountTvByOrder()
+        public IEnumerable<KeyValuePair<string, int>> CountTvByOrder()
         {
-            return repo.ReadAll().GroupBy(x => x.Order)
-                 .Select(x => new KeyValuePair<string, int>(x.Key.CustomerName, x.Key.Televisions.Count()));
+            var groups = repo.ReadAll().GroupBy(x => x.Order.CustomerName);
+            return groups.Select(x => new KeyValuePair<string, int>(x.Key, x.Count()));
+
         }
-        public IQueryable<KeyValuePair<string, double>> AveragePriceOfOrder()
+        public IEnumerable<KeyValuePair<string, double>> AveragePriceOfOrder()
         {
             return repo.ReadAll()
-               .GroupBy(x => x.Order)
+               .GroupBy(x => x.Order.CustomerName)
                .Select(x => new KeyValuePair<string, double>
-               (x.Key.CustomerName, x.Average(x => x.Price) ?? 0));
+               (x.Key, x.Average(x => x.Price) ?? 0));
         }
-        public IQueryable<Order> OrdersInOrderByPrice()
+        public IEnumerable<Order> OrdersInOrderByPrice()
         {
-            return repo.ReadAll()
-                   .GroupBy(x => x.Order)
-                   .OrderBy(x => x.Average(x => x.Price))
-                   .Select(x => x.Key);
+            return repo.ReadAll().OrderBy(x => x.Order.Televisions.Sum(x => x.Price)).Select(x=> x.Order).Distinct();
         }
         public Television CheapestTvOfTheBrand(int brandId)
         {
             return repo.ReadAll().OrderBy(x => x.Price).Where(x => x.Brand.Id == brandId).FirstOrDefault();
+        }
+
+        public Television ReadOne(int id)
+        {
+            if (id < 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            return repo.ReadOne(id);
         }
     }
 }
