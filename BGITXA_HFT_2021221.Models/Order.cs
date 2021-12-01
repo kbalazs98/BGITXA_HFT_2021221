@@ -19,6 +19,9 @@ namespace BGITXA_HFT_2021221.Models
         public virtual ICollection<Television> Televisions { get; set; }
         public string CustomerName { get; set; }
 
-
+        public Order()
+        {
+            Televisions = new HashSet<Television>();
+        }
     }
 }

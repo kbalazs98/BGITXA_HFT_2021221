@@ -55,8 +55,7 @@ namespace BGITXA_HFT_2021221.Logic
             return repo.ReadAll()
                 .GroupBy(x => x.Brand.Name)
                 .Select(x => new KeyValuePair<string, double>
-                (x.Key, x.Average(x => x.Price) ?? 0)); ;
-               
+                (x.Key, x.Average(x => x.Price) ?? 0));
         }
         public IEnumerable<KeyValuePair<string, int>> CountTvByOrder()
         {

@@ -44,8 +44,8 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             return tvlogic.OrdersInOrderByPrice();
         }
 
-        [HttpGet("CheapestTvOfTheBrand")]
-        public Television CheapestTvOfTheBrand([FromBody]int brandId)
+        [HttpGet("CheapestTvOfTheBrand/{brandId}")]
+        public Television CheapestTvOfTheBrand(int brandId)
         {
             return tvlogic.CheapestTvOfTheBrand(brandId);
         }

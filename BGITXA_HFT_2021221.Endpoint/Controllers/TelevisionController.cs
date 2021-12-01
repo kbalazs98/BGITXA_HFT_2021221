@@ -36,7 +36,7 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT /televisions/id
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Television value)
         {
             tvlogic.Update(value);
