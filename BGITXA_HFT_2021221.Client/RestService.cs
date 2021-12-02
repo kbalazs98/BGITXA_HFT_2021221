@@ -45,6 +45,7 @@ namespace BGITXA_HFT_2021221.Client
             }
             return items;
         }
+       
 
         public T GetSingle<T>(string endpoint)
         {
@@ -92,6 +93,6 @@ namespace BGITXA_HFT_2021221.Client
 
             response.EnsureSuccessStatusCode();
         }
-       
+
     }
 }

@@ -36,22 +36,46 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT /brandLogic/id
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Brand value)
         {
-            brandLogic.Update(value);
+            try
+            {
+                brandLogic.Update(value);
+            }
+            catch (Exception)
+            {
+                //without id database cannot update, status code
+            }
+            
         }
 
         // DELETE /brandLogic/id
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            brandLogic.Delete(id);
+            try
+            {
+                brandLogic.Delete(id);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                //negative Id doesnt exist in database,should throw status code
+            }
+            
         }
         [HttpGet("{id}")]
         public Brand Read(int id)
         {
-            return brandLogic.ReadOne(id);
+            try
+            {
+                return brandLogic.ReadOne(id);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                //negative Id doesnt exist in database,should throw status code
+                return null;
+            }
         }
     }
 }

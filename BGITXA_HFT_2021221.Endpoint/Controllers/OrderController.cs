@@ -36,17 +36,34 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         }
 
         // PUT /brandLogic/id
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Put([FromBody] Order value)
         {
-            orderLogic.Update(value);
+            try
+            {
+                orderLogic.Update(value);
+               
+            }
+            catch (Exception)
+            {
+                //without id database cannot update, status code
+            }
+
         }
 
         // DELETE /brandLogic/id
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            orderLogic.Delete(id);
+            try
+            {
+                orderLogic.Delete(id);
+            }
+            catch (Exception)
+            {
+                //negative Id doesnt exist in database,should throw status code
+            }
+
         }
         [HttpGet("{id}")]
         public Order Read(int id)

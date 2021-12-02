@@ -32,26 +32,58 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         [HttpPost]
         public void Post([FromBody] Television value)
         {
-            tvlogic.Create(value);
+            try
+            {
+                tvlogic.Create(value);
+            }
+            catch (ArgumentNullException)
+            {
+                //no foreign key given,throw status code
+            }
         }
 
         // PUT /televisions/id
         [HttpPut]
         public void Put([FromBody] Television value)
         {
-            tvlogic.Update(value);
+            try
+            {
+                tvlogic.Update(value);
+            }
+            catch (Exception )
+            {
+                //id or model is not given, cannot u
+            }
+           
         }
 
         // DELETE /televisions/id
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            tvlogic.Delete(id);
+            try
+            {
+                tvlogic.Delete(id);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                //id shouldnt be negative,status code
+            }
+            
         }
         [HttpGet("{id}")]
         public Television Read(int id)
         {
-            return tvlogic.ReadOne(id);
+            try
+            {
+                return tvlogic.ReadOne(id);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+               //negative Id doesnt exist in database,should throw status code
+               return null;
+            }
+            
         }
     }
 }

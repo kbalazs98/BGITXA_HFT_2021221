@@ -20,6 +20,7 @@ namespace BGITXA_HFT_2021221.Logic
         public void Create(Order order)
         {
             repo.Create(order);
+            //can create a brand without any input because the id is generated(no foreign keys)
         }
 
         public void Delete(int orderId)
@@ -28,7 +29,15 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 throw new ArgumentOutOfRangeException();
             }
-            repo.Delete(orderId);
+            try
+            {
+                repo.Delete(orderId);
+            }
+            catch (Exception)
+            {
+                //repo doesnt find any brand with the given id, status code
+            }
+            
         }
 
         public IQueryable<Order> ReadAll()
@@ -42,7 +51,16 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 throw new ArgumentOutOfRangeException();
             }
-            return repo.ReadOne(id);
+            try
+            {
+                return repo.ReadOne(id);
+            }
+            catch (Exception)
+            {
+                //repo doesnt find any brand with the given id, status code
+                return null;
+            }
+           
         }
 
         public void Update(Order order)

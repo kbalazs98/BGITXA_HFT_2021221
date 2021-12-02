@@ -18,9 +18,18 @@ namespace BGITXA_HFT_2021221.Logic
         }
         public void Create(Television television)
         {
-            if (television.Model == null)
+            if (television.Model == "")
             {
                 throw new ArgumentNullException();
+            }
+            if (television.BrandId == 0)
+            {
+                throw new ArgumentNullException();
+            }
+            if (television.OrderId == 0)
+            {
+                throw new ArgumentNullException();
+
             }
             repo.Create(television);
         }
@@ -30,7 +39,16 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 throw new ArgumentOutOfRangeException();
             }
-            repo.Delete(televisionId);
+
+            try
+            {
+                repo.Delete(televisionId);
+            }
+            catch (Exception)
+            {
+                //repo doesnt find any brand with the given id, status code
+            }
+
         }
         public IQueryable<Television> ReadAll()
         {
@@ -76,7 +94,8 @@ namespace BGITXA_HFT_2021221.Logic
         }
         public Television CheapestTvOfTheBrand(int brandId)
         {
-            return repo.ReadAll().OrderBy(x => x.Price).Where(x => x.Brand.Id == brandId).FirstOrDefault();
+                return repo.ReadAll().OrderBy(x => x.Price).Where(x => x.Brand.Id == brandId).FirstOrDefault();
+                //firstordefault retunrs null with wrong id...
         }
 
         public Television ReadOne(int id)
@@ -85,7 +104,15 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 throw new ArgumentOutOfRangeException();
             }
-            return repo.ReadOne(id);
+            try
+            {
+                return repo.ReadOne(id);
+            }
+            catch (Exception)
+            {
+                //ReadOne doesnt find a tv with the given id, status code
+                return null;
+            }
         }
     }
 }

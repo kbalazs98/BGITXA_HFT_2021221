@@ -13,7 +13,7 @@ namespace BGITXA_HFT_2021221.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; } // serialnumber
+        public int Id { get; set; }
 
         [Required]
         public string Model { get; set; }
