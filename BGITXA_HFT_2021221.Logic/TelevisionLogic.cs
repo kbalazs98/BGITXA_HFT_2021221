@@ -18,7 +18,7 @@ namespace BGITXA_HFT_2021221.Logic
         }
         public void Create(Television television)
         {
-            if (television.Model == "")
+            if (television.Model == "")//somehow if you enter this in the client the exception wont throw, doesnt even reaches this method
             {
                 throw new ArgumentNullException();
             }

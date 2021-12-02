@@ -65,11 +65,11 @@ namespace BGITXA_HFT_2021221.Client
         {
             Console.WriteLine("Which action do you wish to perform?");
 
-            Console.WriteLine("[1] List all Tvs");
-            Console.WriteLine("[2] List a Tv based on Id");
-            Console.WriteLine("[3] Create a new TV");
-            Console.WriteLine("[4] Update a given Tv");
-            Console.WriteLine("[5] Delete a given Tv");
+            Console.WriteLine("[1] List all tvs");
+            Console.WriteLine("[2] List a tv based on Id");
+            Console.WriteLine("[3] Create a new tv");
+            Console.WriteLine("[4] Update a given tv");
+            Console.WriteLine("[5] Delete a given tv");
             try
             {
                 int input = int.Parse(Console.ReadLine());
@@ -77,23 +77,18 @@ namespace BGITXA_HFT_2021221.Client
                 switch (input)
                 {
                     case 1:
-                        Console.WriteLine("performing task 1");
                         Listitems<Television>(rest, "/televisions");
                         break;
                     case 2:
-                        Console.WriteLine("performing task 2");
                         ListOne<Television>(rest, "/televisions");
                         break;
                     case 3:
-                        Console.WriteLine("performing task 3");
                         Create<Television>(rest, "/televisions");
                         break;
                     case 4:
-                        Console.WriteLine("performing task 4");
                         Update<Television>(rest, "/televisions");
                         break;
                     case 5:
-                        Console.WriteLine("performing task 5");
                         Delete<Television>(rest, "/televisions");
                         break;
                     default:
@@ -127,22 +122,17 @@ namespace BGITXA_HFT_2021221.Client
                 switch (input)
                 {
                     case 1:
-                        Console.WriteLine("performing task 1");
                         Listitems<Order>(rest, "/orders");
                         break;
                     case 2:
-                        ListOne<Order>(rest, "/orders");
                         break;
                     case 3:
-                        Console.WriteLine("performing task 3");
                         Create<Order>(rest, "/orders");
                         break;
                     case 4:
-                        Console.WriteLine("performing task 4");
                         Update<Order>(rest, "/orders");
                         break;
                     case 5:
-                        Console.WriteLine("performing task 5");
                         Delete<Television>(rest, "/televisions");
                         break;
                     default:
@@ -176,22 +166,18 @@ namespace BGITXA_HFT_2021221.Client
                 switch (input)
                 {
                     case 1:
-                        Console.WriteLine("performing task 1");
                         Listitems<Brand>(rest, "/brands");
                         break;
                     case 2:
                         ListOne<Order>(rest, "/brands");
                         break;
                     case 3:
-                        Console.WriteLine("performing task 3");
                         Create<Brand>(rest, "/brands");
                         break;
                     case 4:
-                        Console.WriteLine("performing task 4");
                         Update<Brand>(rest, "/brands");
                         break;
                     case 5:
-                        Console.WriteLine("performing task 5");
                         Delete<Television>(rest, "/televisions");
                         break;
                     default:
@@ -216,7 +202,7 @@ namespace BGITXA_HFT_2021221.Client
             Console.WriteLine("[1] List the average price of brands");
             Console.WriteLine("[2] List the number of tvs in the orders");
             Console.WriteLine("[3] List the average price of the orders");
-            Console.WriteLine("[4] List the orders sorted by price (high to low)");
+            Console.WriteLine("[4] List the orders sorted by price");
             Console.WriteLine("[5] Get the cheapest tv of the brand");
             try
             {
@@ -297,6 +283,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void ListOne<T>(RestService rest, string path)
         {
+            Console.WriteLine($"API Path: {path}");
             if (typeof(T) == typeof(Television))
             {
                 try
@@ -385,6 +372,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void Create<T>(RestService rest, string path)
         {
+            Console.WriteLine($"API Path: {path}");
             if (typeof(T) == typeof(Television))
             {
                 try
@@ -461,6 +449,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void Update<T>(RestService rest, string path)
         {
+            Console.WriteLine($"API Path: {path}");
             if (typeof(T) == typeof(Television))
             {
                 try
@@ -553,6 +542,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void Delete<T>(RestService rest, string path)
         {
+            Console.WriteLine($"API Path: {path}");
             if (typeof(T) == typeof(Television))
             {
                 try
@@ -605,6 +595,7 @@ namespace BGITXA_HFT_2021221.Client
 
         public static void AveragePriceOfBrand(RestService rest)
         {
+            Console.WriteLine($"API Path: /noncrud/AveragePriceOfBrand");
             var AveragePriceOfBrand = rest.Get<KeyValuePair<string, double>>("/noncrud/AveragePriceOfBrand");
             foreach (var brand in AveragePriceOfBrand)
             {
@@ -616,6 +607,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void CountTvByOrder(RestService rest)
         {
+            Console.WriteLine($"API Path: /noncrud/CountTvByOrder");
             var CountTvByOrder = rest.Get<KeyValuePair<string, int>>("/noncrud/CountTvByOrder");
             foreach (var brand in CountTvByOrder)
             {
@@ -627,6 +619,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void AveragePriceOfOrder(RestService rest)
         {
+            Console.WriteLine($"API Path: /noncrud/AveragePriceOfOrder");
             var AveragePriceOfOrder = rest.Get<KeyValuePair<string, double>>("/noncrud/AveragePriceOfOrder");
             foreach (var brand in AveragePriceOfOrder)
             {
@@ -638,6 +631,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void OrdersInOrderByPrice(RestService rest)
         {
+            Console.WriteLine($"API Path: /noncrud/OrdersInOrderByPrice");
             var OrdersInOrderByPrice = rest.Get<Order>("/noncrud/OrdersInOrderByPrice");
             foreach (var order in OrdersInOrderByPrice)
             {
@@ -649,6 +643,7 @@ namespace BGITXA_HFT_2021221.Client
         }
         public static void CheapestTvOfTheBrand(RestService rest)
         {
+            Console.WriteLine($"API Path: /noncrud/CheapestTvOfTheBrand");
             try
             {
                 Console.WriteLine("Which brand?(id)");

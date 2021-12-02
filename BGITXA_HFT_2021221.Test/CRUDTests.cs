@@ -61,9 +61,9 @@ namespace BGITXA_HFT_2021221.Test
             Assert.Throws<ArgumentOutOfRangeException>(() => tvlogic.Delete(-1));
         }
         [Test]
-        public void TvCreateWithId()
+        public void TvCreated()
         {
-            Assert.DoesNotThrow( () => tvlogic.Create(new Television() { Id = 10, Model = "model", Price = 10 }) );
+            Assert.DoesNotThrow( () => tvlogic.Create(new Television() { Model = "model", BrandId = 1,OrderId=2}) );
         }
         [Test]
         public void TvDeleteWihtPozitiveId()
