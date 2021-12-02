@@ -5,7 +5,7 @@ using System.Linq;
 using BGITXA_HFT_2021221.Models;
 
 namespace BGITXA_HFT_2021221.Client
-{
+{//delete wont delete in order,brand
     class Program
     {
         static void Main(string[] args)
@@ -125,6 +125,7 @@ namespace BGITXA_HFT_2021221.Client
                         Listitems<Order>(rest, "/orders");
                         break;
                     case 2:
+                        ListOne<Order>(rest, "/orders");
                         break;
                     case 3:
                         Create<Order>(rest, "/orders");
@@ -405,6 +406,7 @@ namespace BGITXA_HFT_2021221.Client
                     Console.Clear();
                     Console.WriteLine(e.Message);
                 }
+                Console.Clear();
                 Console.WriteLine("check if it was succesfull");
                 Console.WriteLine("press enter to continue");
                 Console.ReadLine();
@@ -560,6 +562,7 @@ namespace BGITXA_HFT_2021221.Client
 
             if (typeof(T) == typeof(Order))
             {
+                Console.WriteLine("Important note: Deleting an order which has televisions is not possible.Try deleting the televisions tvs firts.");
                 try
                 {
                     Console.WriteLine("which id do you want to delete?");
@@ -575,6 +578,7 @@ namespace BGITXA_HFT_2021221.Client
 
             if (typeof(T) == typeof(Brand))
             {
+                Console.WriteLine("Important note: Deleting an brand which has televisions is not possible.Try deleting the televisions tvs firts.");
                 try
                 {
                     Console.WriteLine("which id do you want to delete?");

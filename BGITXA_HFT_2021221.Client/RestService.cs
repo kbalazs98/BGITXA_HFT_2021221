@@ -81,7 +81,6 @@ namespace BGITXA_HFT_2021221.Client
         {
             HttpResponseMessage response =
                 client.DeleteAsync(endpoint + "/" + id.ToString()).GetAwaiter().GetResult();
-
             response.EnsureSuccessStatusCode();
         }
 
