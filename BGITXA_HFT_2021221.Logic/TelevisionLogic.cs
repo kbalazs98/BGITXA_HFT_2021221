@@ -31,7 +31,15 @@ namespace BGITXA_HFT_2021221.Logic
                 throw new ArgumentNullException();
 
             }
-            repo.Create(television);
+            try
+            {
+                repo.Create(television);
+            }
+            catch (Exception)
+            {
+                //catch if it given but there is no order/brand with the given id
+            }
+           
         }
         public void Delete(int televisionId)
         {

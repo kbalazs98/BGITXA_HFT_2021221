@@ -50,9 +50,9 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             {
                 tvlogic.Update(value);
             }
-            catch (Exception )
+            catch (ArgumentNullException)
             {
-                //id or model is not given, cannot u
+                //id or model is not given
             }
            
         }
