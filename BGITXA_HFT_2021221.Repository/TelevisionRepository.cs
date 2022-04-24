@@ -43,6 +43,7 @@ namespace BGITXA_HFT_2021221.Repository
             old.Model = television.Model;
             old.Order = television.Order;
             old.OrderId = television.OrderId;
+            old.BrandId = television.BrandId;
             old.Price = television.Price;
             context.SaveChanges();
         }

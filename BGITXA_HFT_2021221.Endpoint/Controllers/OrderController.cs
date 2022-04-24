@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Endpoint.Controllers
 {
-    [Route("Orders")]
+    [Route("Order")]
     [ApiController]
     public class OrderController : ControllerBase
     {

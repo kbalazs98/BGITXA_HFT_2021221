@@ -5,7 +5,7 @@ using System.Linq;
 using BGITXA_HFT_2021221.Models;
 
 namespace BGITXA_HFT_2021221.Client
-{//delete wont delete in order,brand
+{
     class Program
     {
         static void Main(string[] args)
@@ -74,22 +74,23 @@ namespace BGITXA_HFT_2021221.Client
             {
                 int input = int.Parse(Console.ReadLine());
                 Console.Clear();
+                string path = "/Television";
                 switch (input)
                 {
                     case 1:
-                        Listitems<Television>(rest, "/televisions");
+                        Listitems<Television>(rest, path);
                         break;
                     case 2:
-                        ListOne<Television>(rest, "/televisions");
+                        ListOne<Television>(rest, path);
                         break;
                     case 3:
-                        Create<Television>(rest, "/televisions");
+                        Create<Television>(rest, path);
                         break;
                     case 4:
-                        Update<Television>(rest, "/televisions");
+                        Update<Television>(rest, path);
                         break;
                     case 5:
-                        Delete<Television>(rest, "/televisions");
+                        Delete<Television>(rest, path);
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -119,22 +120,23 @@ namespace BGITXA_HFT_2021221.Client
             {
                 int input = int.Parse(Console.ReadLine());
                 Console.Clear();
+                string path = "/Order";
                 switch (input)
                 {
                     case 1:
-                        Listitems<Order>(rest, "/orders");
+                        Listitems<Order>(rest, path);
                         break;
                     case 2:
-                        ListOne<Order>(rest, "/orders");
+                        ListOne<Order>(rest, path);
                         break;
                     case 3:
-                        Create<Order>(rest, "/orders");
+                        Create<Order>(rest, path);
                         break;
                     case 4:
-                        Update<Order>(rest, "/orders");
+                        Update<Order>(rest, path);
                         break;
                     case 5:
-                        Delete<Television>(rest, "/televisions");
+                        Delete<Television>(rest, "/Television");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException(); ;
@@ -160,6 +162,7 @@ namespace BGITXA_HFT_2021221.Client
             Console.WriteLine("[3] Create a new brand");
             Console.WriteLine("[4] Update a given brand");
             Console.WriteLine("[5] Delete a given brand");
+            string path = "/Brand";
             try
             {
                 int input = int.Parse(Console.ReadLine());
@@ -167,19 +170,19 @@ namespace BGITXA_HFT_2021221.Client
                 switch (input)
                 {
                     case 1:
-                        Listitems<Brand>(rest, "/brands");
+                        Listitems<Brand>(rest, path);
                         break;
                     case 2:
-                        ListOne<Order>(rest, "/brands");
+                        ListOne<Order>(rest, path);
                         break;
                     case 3:
-                        Create<Brand>(rest, "/brands");
+                        Create<Brand>(rest, path);
                         break;
                     case 4:
-                        Update<Brand>(rest, "/brands");
+                        Update<Brand>(rest, path);
                         break;
                     case 5:
-                        Delete<Television>(rest, "/televisions");
+                        Delete<Television>(rest, "/Television");
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -391,14 +394,14 @@ namespace BGITXA_HFT_2021221.Client
                     int ordeID = int.Parse(Console.ReadLine());
                     try
                     {
-                        rest.Post(new Television() { Model = model, Price = price, BrandId = brandId, OrderId = ordeID }, "/televisions");
+                        rest.Post(new Television() { Model = model, Price = price, BrandId = brandId, OrderId = ordeID }, "/Television");
                     }
                     catch (System.Net.Http.HttpRequestException)
                     {
                         //FK constraint
                         //if you enter 0 for any of the id's the server will return null and wont notify the user sadly, but if you enter null or "" for the model 
-                             // the response.EnsureSuccessStatusCode() throws a HttpRequestException.. 
-                                    // i dont notify the user with this HttpRequestException to avoid inconsistency, just catching
+                        // the response.EnsureSuccessStatusCode() throws a HttpRequestException.. 
+                        // i dont notify the user with this HttpRequestException to avoid inconsistency, just catching
                     }
                 }
                 catch (FormatException e)
@@ -418,7 +421,7 @@ namespace BGITXA_HFT_2021221.Client
                 try
                 {
                     Console.WriteLine("Please enter the name of the customer");
-                    rest.Post(new Order() { CustomerName = Console.ReadLine() }, "/orders");
+                    rest.Post(new Order() { CustomerName = Console.ReadLine() }, "/Order");
 
                 }
                 catch (FormatException e)
@@ -435,7 +438,7 @@ namespace BGITXA_HFT_2021221.Client
                 try
                 {
                     Console.WriteLine("Please enter the name of the brand");
-                    rest.Post(new Brand() { Name = Console.ReadLine() }, "/brands");
+                    rest.Post(new Brand() { Name = Console.ReadLine() }, "/Brand");
 
                 }
                 catch (FormatException e)
@@ -473,7 +476,7 @@ namespace BGITXA_HFT_2021221.Client
 
                     try
                     {
-                        rest.Post(new Television() { Model = model, Price = price, BrandId = brandId, OrderId = ordeID }, "/televisions");
+                        rest.Post(new Television() { Model = model, Price = price, BrandId = brandId, OrderId = ordeID }, "/Television");
                     }
                     catch (System.Net.Http.HttpRequestException)
                     {
@@ -503,7 +506,7 @@ namespace BGITXA_HFT_2021221.Client
                     Console.WriteLine("Please enter the name of the customer");
                     string name = Console.ReadLine();
 
-                    rest.Put(new Order() { Id = id, CustomerName = name }, "/orders");
+                    rest.Put(new Order() { Id = id, CustomerName = name }, "/Order");
                 }
                 catch (FormatException f)
                 {
@@ -527,7 +530,7 @@ namespace BGITXA_HFT_2021221.Client
                     Console.WriteLine("Please enter the name of the brand");
                     string name = Console.ReadLine();
 
-                    rest.Put(new Brand() { Id = id, Name = name }, "/brands");
+                    rest.Put(new Brand() { Id = id, Name = name }, "/Brand");
                 }
                 catch (FormatException f)
                 {
@@ -551,7 +554,7 @@ namespace BGITXA_HFT_2021221.Client
                 {
                     Console.WriteLine("which id do you want to delete?");
                     int todelete = int.Parse(Console.ReadLine());
-                    rest.Delete(todelete, "/televisions");
+                    rest.Delete(todelete, "/Television");
                 }
                 catch (FormatException f)
                 {
@@ -567,7 +570,7 @@ namespace BGITXA_HFT_2021221.Client
                 {
                     Console.WriteLine("which id do you want to delete?");
                     int todelete = int.Parse(Console.ReadLine());
-                    rest.Delete(todelete, "/orders");
+                    rest.Delete(todelete, "/Order");
                 }
                 catch (FormatException f)
                 {
@@ -583,12 +586,12 @@ namespace BGITXA_HFT_2021221.Client
                 {
                     Console.WriteLine("which id do you want to delete?");
                     int todelete = int.Parse(Console.ReadLine());
-                    rest.Delete(todelete, "/brands");
+                    rest.Delete(todelete, "/Brand");
                 }
                 catch (FormatException f)
                 {
                     Console.Clear();
-                    Console.WriteLine(f.Message); 
+                    Console.WriteLine(f.Message);
                 }
             }
             Console.WriteLine("check if the delete was succesfull");
@@ -663,7 +666,7 @@ namespace BGITXA_HFT_2021221.Client
                     Console.Clear();
                     Console.WriteLine($"The cheapest tv is {CheapestTvOfTheBrand.Model} with the price of: {CheapestTvOfTheBrand.Price}");
                 }
-              
+
             }
             catch (FormatException f)
             {

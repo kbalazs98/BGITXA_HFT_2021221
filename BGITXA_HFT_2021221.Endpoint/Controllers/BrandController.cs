@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Endpoint.Controllers
 {
-    [Route("brands")]
+    [Route("Brand")]
     [ApiController]
     public class BrandController : ControllerBase
     {

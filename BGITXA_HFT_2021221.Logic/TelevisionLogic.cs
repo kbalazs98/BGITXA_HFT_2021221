@@ -39,7 +39,6 @@ namespace BGITXA_HFT_2021221.Logic
             {
                 //catch if it given but there is no order/brand with the given id
             }
-           
         }
         public void Delete(int televisionId)
         {

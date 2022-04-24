@@ -1,0 +1,43 @@
+﻿<Window x:Class="BGITXA_HFT_2021221.WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BGITXA_HFT_2021221.WpfClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="700">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox ItemsSource="{Binding Televisions}" SelectedItem="{Binding SelectedtV}" Grid.Column="0" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Model}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+       
+        <StackPanel Grid.Column="1">
+            <StackPanel Grid.Column="1" DataContext="{Binding SelectedtV}">
+                <Label Content="Model" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding Model}" Padding="10" Margin="0,0,0,20"/>
+                <Label Content="Price" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding Price}" Padding="10" Margin="0,0,0,20"/>
+                <Label Content="Brand" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding BrandId}" Padding="10" Margin="0,0,0,20"/>
+                <Label Content="Order" Background="LightBlue" Padding="10"/>
+                <TextBox Text="{Binding OrderId}" Padding="10" Margin="0,0,0,0"/>
+            </StackPanel>
+            <Button Content="CreateTv" Command="{Binding CreateTvCommand}" Padding="10" Margin="10"/>
+            <Button Content="DeleteTv" Command="{Binding DeleteTvCommand}" Padding="10" Margin="10"/>
+            <Button Content="UpdateTv" Command="{Binding EditTvCommand}" Padding="10" Margin="10"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

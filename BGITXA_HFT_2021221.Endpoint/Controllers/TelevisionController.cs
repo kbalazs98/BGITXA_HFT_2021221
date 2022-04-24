@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BGITXA_HFT_2021221.Endpoint.Controllers
 {
-    [Route("televisions")]//          /default route
+    [Route("Television")]//          /default route
     [ApiController]
     public class TelevisionController : ControllerBase
     {
@@ -21,14 +21,14 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             this.tvlogic = tvlogic;
         }
 
-        // GET: /televisions
+        // GET: /television
         [HttpGet]
         public IEnumerable<Television> GetAll()
         {
             return tvlogic.ReadAll();
         }
 
-        // POST /televisions
+        // POST /television
         [HttpPost]
         public void Post([FromBody] Television value)
         {
@@ -42,7 +42,7 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             }
         }
 
-        // PUT /televisions/id
+        // PUT /television/id
         [HttpPut]
         public void Put([FromBody] Television value)
         {
@@ -57,7 +57,7 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
            
         }
 
-        // DELETE /televisions/id
+        // DELETE /television/id
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
