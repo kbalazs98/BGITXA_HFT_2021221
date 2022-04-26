@@ -15,7 +15,7 @@ namespace BGITXA_HFT_2021221.Data
         public virtual DbSet<Order> Orders { get; set; }
 
         public TelevisionShopDbContext()
-        { 
+        {
             Database.EnsureCreated();
         }
         public TelevisionShopDbContext(DbContextOptions<TelevisionShopDbContext> options) : base(options)

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BGITXA_HFT_2021221.WpfClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="700">
+        Title="MainWindow" Height="600" Width="700">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -22,7 +22,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-       
+
         <StackPanel Grid.Column="1">
             <StackPanel Grid.Column="1" DataContext="{Binding SelectedtV}">
                 <Label Content="Model" Background="LightBlue" Padding="10"/>
@@ -38,6 +38,62 @@
             <Button Content="DeleteTv" Command="{Binding DeleteTvCommand}" Padding="10" Margin="10"/>
             <Button Content="UpdateTv" Command="{Binding EditTvCommand}" Padding="10" Margin="10"/>
         </StackPanel>
+        <Grid Grid.Column="2" Background="AliceBlue" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10" Content="Average ppice of brands"/>
+            <ListBox ItemsSource="{Binding AveragePriceOfBrand}"  Grid.Row="1" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding Key}"/>
+                            <Label Content="{Binding Value}" ContentStringFormat=" {0} Euro"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Grid.Row="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="10" Content="Number of tvs in each order"/>
+            <ListBox ItemsSource="{Binding CountTvByOrder}"  Grid.Row="3" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding Key}"/>
+                            <Label Content="{Binding Value}" ContentStringFormat=" {0} pcs"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="10" Content="Average price of each order"/>
+            <ListBox ItemsSource="{Binding AveragePriceOfOrder}"  Grid.Row="5" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <Label Content="{Binding Key}"/>
+                            <Label Content="{Binding Value}" ContentStringFormat=" {0} Euro"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Label Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Padding="10" Content="Orders from most expensive to least expensive"/>
+            <ListBox ItemsSource="{Binding OrdersInOrderByPrice}"  Grid.Row="7" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                            <Label Content="{Binding CustomerName}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <Button Command="{Binding UpdateRequest}" Content="Update" Grid.Row="8" Padding="10" Background="LightBlue"/>
+        </Grid>
+
 
     </Grid>
 </Window>
