@@ -1,0 +1,39 @@
+﻿#list {
+    width: 100%;
+}
+
+#list, th, td {
+    border: 1px solid black;
+}
+
+#list {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+
+th {
+    background-color: lightgrey;
+}
+
+#edit {
+    display: none;
+    margin-bottom: 30px;
+}
+
+    #edit label, button, input {
+        margin: 2px;
+        padding: 5px;
+    }
+
+#add {
+    margin-bottom: 10px;
+}
+
+    #add label, button, input {
+        margin: 2px;
+        padding: 5px;
+    }

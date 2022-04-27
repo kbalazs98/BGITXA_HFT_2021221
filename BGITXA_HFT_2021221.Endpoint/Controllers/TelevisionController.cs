@@ -1,6 +1,8 @@
-﻿using BGITXA_HFT_2021221.Logic;
+﻿using BGITXA_HFT_2021221.Endpoint.Services;
+using BGITXA_HFT_2021221.Logic;
 using BGITXA_HFT_2021221.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +17,12 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
     public class TelevisionController : ControllerBase
     {
         ITelevisionLogic tvlogic;
+        IHubContext<SignalRHub> hub;
 
-        public TelevisionController(ITelevisionLogic tvlogic)
+        public TelevisionController(ITelevisionLogic tvlogic, IHubContext<SignalRHub> hub)
         {
             this.tvlogic = tvlogic;
+            this.hub = hub;
         }
 
         // GET: /television
@@ -35,6 +39,7 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             try
             {
                 tvlogic.Create(value);
+                hub.Clients.All.SendAsync("TelevisionCreated", value);
             }
             catch (ArgumentNullException)
             {
@@ -49,6 +54,7 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
             try
             {
                 tvlogic.Update(value);
+                hub.Clients.All.SendAsync("TelevisionUpdated", value);
             }
             catch (ArgumentNullException)
             {
@@ -63,7 +69,9 @@ namespace BGITXA_HFT_2021221.Endpoint.Controllers
         {
             try
             {
+                var value = tvlogic.ReadOne(id);
                 tvlogic.Delete(id);
+                hub.Clients.All.SendAsync("TelevisionDeleted", value);
             }
             catch (ArgumentOutOfRangeException)
             {

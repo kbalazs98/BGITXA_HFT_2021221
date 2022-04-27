@@ -1,4 +1,5 @@
 using BGITXA_HFT_2021221.Data;
+using BGITXA_HFT_2021221.Endpoint.Services;
 using BGITXA_HFT_2021221.Logic;
 using BGITXA_HFT_2021221.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,7 @@ namespace BGITXA_HFT_2021221.Endpoint
             services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddTransient<IBrandRepository, BrandRepository>();
 
+            services.AddSignalR();
             services.AddTransient<TelevisionShopDbContext, TelevisionShopDbContext>();
         }
 
@@ -41,11 +43,18 @@ namespace BGITXA_HFT_2021221.Endpoint
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+               .AllowCredentials()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .WithOrigins("http://localhost:38688"));
+
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }

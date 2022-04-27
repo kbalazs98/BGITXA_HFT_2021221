@@ -25,7 +25,7 @@ namespace BGITXA_HFT_2021221_JSClient
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>

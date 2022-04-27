@@ -50,7 +50,7 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10" Content="Average ppice of brands"/>
+            <Label Grid.Row="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="10" Content="Average price of brands"/>
             <ListBox ItemsSource="{Binding AveragePriceOfBrand}"  Grid.Row="1" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -87,13 +87,11 @@
             <ListBox ItemsSource="{Binding OrdersInOrderByPrice}"  Grid.Row="7" >
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                            <Label Content="{Binding CustomerName}"/>
+                        <Label Content="{Binding CustomerName}"/>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
             <Button Command="{Binding UpdateRequest}" Content="Update" Grid.Row="8" Padding="10" Background="LightBlue"/>
         </Grid>
-
-
     </Grid>
 </Window>

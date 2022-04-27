@@ -18,7 +18,6 @@ namespace BGITXA_HFT_2021221.WpfClient
         public List<Order> OrdersInOrderByPrice { get => ordersInOrderByPrice; set { SetProperty(ref ordersInOrderByPrice, value); } }
 
         public RestCollection<Television> Televisions { get; set; }
-        public RestCollection<Order> Orders { get; set; }
         private Television selectedTv;
         private RestService rest;
         private List<KeyValuePair<string, double>> averagePriceOfBrand;
@@ -57,8 +56,7 @@ namespace BGITXA_HFT_2021221.WpfClient
         {
             System.Threading.Thread.Sleep(7000);
             rest = new RestService("http://localhost:9910/");
-            Televisions = new RestCollection<Television>("http://localhost:9910/", "Television");
-            Orders = new RestCollection<Order>("http://localhost:9910/", "Order");
+            Televisions = new RestCollection<Television>("http://localhost:9910/", "Television", "hub");
             RequestUpdate();
 
             CreateTvCommand = new RelayCommand(() =>

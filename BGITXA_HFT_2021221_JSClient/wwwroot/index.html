@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Television UI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1>Television Catalog</h1>
+    <div id="add">
+
+        <label>Model</label>
+        <input type="text" id="Model" />
+
+        <label>Price</label>
+        <input type="number" id="Price" />
+
+        <label>BrandID(1/2/3)</label>
+        <input type="number" id="BrandID" />
+
+        <label>OrderID(1/2)</label>
+        <input type="number" id="OrderID" />
+
+        <button type="button" onclick="create()">Add</button>
+    </div>
+
+    <div id="edit">
+        <label>Model</label>
+        <input type="text" id="Modeltoupdate" />
+
+        <label>Price</label>
+        <input type="number" id="Pricetoupdate" />
+
+        <label>BrandID(1/2/3)</label>
+        <input type="number" id="BrandIDtoupdate" />
+
+        <label>OrderID(1/2)</label>
+        <input type="number" id="OrderIDtoupdate" />
+
+        <button type="button" onclick="update()">Update</button>
+    </div>
+
+    <table id="list">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Model</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

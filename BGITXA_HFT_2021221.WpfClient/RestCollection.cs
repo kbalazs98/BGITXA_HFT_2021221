@@ -159,12 +159,12 @@ namespace BGITXA_HFT_2021221.WpfClient
         {
             HttpResponseMessage response =
                 await client.PostAsJsonAsync(endpoint, item);
-            
+
             if (!response.IsSuccessStatusCode)
             {
                 var error = await response.Content.ReadAsAsync<RestExceptionInfo>();
                 throw new ArgumentException(error.Msg);
-                
+
             }
             response.EnsureSuccessStatusCode();
         }
@@ -348,7 +348,7 @@ namespace BGITXA_HFT_2021221.WpfClient
 
         public void Add(T item)
         {
-            
+
             if (hasSignalR)
             {
                 this.rest.PostAsync(item, typeof(T).Name);
